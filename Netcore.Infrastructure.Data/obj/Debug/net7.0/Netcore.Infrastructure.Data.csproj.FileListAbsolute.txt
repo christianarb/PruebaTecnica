@@ -1,0 +1,15 @@
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\bin\Debug\net7.0\Netcore.Infrastructure.Data.deps.json
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\bin\Debug\net7.0\Netcore.Infrastructure.Data.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\bin\Debug\net7.0\Netcore.Infrastructure.Data.pdb
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\bin\Debug\net7.0\Netcore.Domain.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\bin\Debug\net7.0\Netcore.Domain.pdb
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.csproj.AssemblyReference.cache
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.AssemblyInfoInputs.cache
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.AssemblyInfo.cs
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.csproj.CoreCompileInputs.cache
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.csproj.CopyComplete
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\refint\Netcore.Infrastructure.Data.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\Netcore.Infrastructure.Data.pdb
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Infrastructure.Data\obj\Debug\net7.0\ref\Netcore.Infrastructure.Data.dll

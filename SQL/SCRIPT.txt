@@ -1,0 +1,347 @@
+USE [prueba-tecnica]
+GO
+/****** Object:  Table [dbo].[Carrera]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Carrera](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[facultad] [int] NULL,
+	[nombre_carrera] [nvarchar](256) NULL,
+	[codigo_carrera] [nvarchar](16) NULL,
+	[creado_tmstp] [datetime] NULL,
+	[actualizado_mstp] [datetime] NULL,
+	[estado] [nchar](1) NULL,
+ CONSTRAINT [PK_carrera] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Facultad]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Facultad](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre_facultad] [nvarchar](512) NOT NULL,
+	[codigo_facultad] [nvarchar](16) NOT NULL,
+	[creado_tmstp] [datetime] NULL,
+	[actualizado_tmstp] [datetime] NULL,
+	[estado] [nchar](1) NULL,
+ CONSTRAINT [PK_facultad] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Carrera]  WITH CHECK ADD  CONSTRAINT [FK_carrera_facultad] FOREIGN KEY([facultad])
+REFERENCES [dbo].[Facultad] ([id])
+GO
+ALTER TABLE [dbo].[Carrera] CHECK CONSTRAINT [FK_carrera_facultad]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CarreraCreated]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_CarreraCreated]
+@nombre_carrera as nvarchar(256),
+@codigo_carrera as nvarchar(16),
+@facultad as int,
+@id as int out
+AS
+  INSERT INTO 
+	Carrera (nombre_carrera , codigo_carrera , facultad,estado,creado_tmstp)
+  VALUES 
+	(@nombre_carrera , @codigo_carrera,@facultad,'A',CURRENT_TIMESTAMP)
+  SET
+	@id = SCOPE_IDENTITY() 
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CarreraDelete]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_CarreraDelete]
+@id as int
+AS
+	UPDATE 
+		Carrera 
+	SET
+		 estado = 'I'
+	WHERE
+		id = @id
+
+  
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CarreraGetAll]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE  PROCEDURE [dbo].[SP_CarreraGetAll]
+AS
+SELECT 
+	id,
+	facultad,
+	nombre_carrera,
+	codigo_carrera,
+	creado_tmstp,
+	actualizado_mstp,
+	estado
+FROM 
+	Carrera 
+where 
+	estado = 'A'
+order by 
+	id desc
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CarreraGetAllDeleted]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_CarreraGetAllDeleted]
+AS
+SELECT 
+	id,
+	facultad,
+	nombre_carrera,
+	codigo_carrera,
+	creado_tmstp,
+	actualizado_mstp,
+	estado
+FROM 
+	Carrera 
+where 
+	estado = 'I'
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CarreraGetById]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_CarreraGetById]
+@id as int
+AS
+  SELECT 
+	id,
+	facultad,
+	nombre_carrera,
+	codigo_carrera,
+	creado_tmstp,
+	actualizado_mstp,
+	estado
+ FROM 
+	Carrera  
+  WHERE 
+	Id = @id and estado = 'A'
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CarreraUpdate]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_CarreraUpdate]
+@id as int,
+@nombre_carrera as nvarchar(256),
+@codigo_carrera as nvarchar(16),
+@facultad as int
+AS
+  UPDATE 
+	Carrera 
+ SET
+	 nombre_carrera = @nombre_carrera , 
+	 codigo_carrera = @codigo_carrera ,
+	 facultad = @facultad,
+	 actualizado_mstp = CURRENT_TIMESTAMP
+WHERE
+	id = @id
+
+  
+GO
+/****** Object:  StoredProcedure [dbo].[SP_FacultadCreated]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_FacultadCreated]
+@nombre_facultad as nvarchar(256),
+@codigo_facultad as nvarchar(16),
+@id as int out
+AS
+  INSERT INTO Facultad 
+	(nombre_facultad, codigo_facultad,estado,creado_tmstp)
+  VALUES 
+	(@nombre_facultad, @codigo_facultad,'A',CURRENT_TIMESTAMP)
+  SET @id = SCOPE_IDENTITY() 
+GO
+/****** Object:  StoredProcedure [dbo].[SP_FacultadDelete]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_FacultadDelete]
+@id_facultad_source as int,
+@id_facultad_destination as int
+AS
+DECLARE @id_carrera int;
+BEGIN TRY
+ BEGIN TRANSACTION FacultadDeleted
+	UPDATE  
+		Facultad 
+	SET		
+		estado = 'I'
+	WHERE   
+		id = @id_facultad_source;
+
+
+	DECLARE cursor_carrera CURSOR
+	FOR SELECT 
+			id
+		FROM 
+			Carrera
+		where 
+			facultad = @id_facultad_source;
+
+	OPEN cursor_carrera;
+
+	FETCH NEXT FROM 
+			cursor_carrera 
+		INTO 
+			 @id_carrera;
+
+	WHILE @@FETCH_STATUS = 0
+		BEGIN
+		   UPDATE 
+				Carrera 
+			SET 
+				facultad = @id_facultad_destination
+			WHERE 
+				id = @id_carrera;
+
+			FETCH NEXT FROM 
+				cursor_carrera 
+			INTO 
+				@id_carrera ;
+		END;
+
+	CLOSE cursor_carrera;
+
+	DEALLOCATE cursor_carrera;
+ COMMIT TRANSACTION FacultadDeleted
+END TRY
+
+BEGIN CATCH 
+  IF (@@TRANCOUNT > 0)
+   BEGIN
+      ROLLBACK TRANSACTION FacultadDeleted
+      PRINT 'Error detected, all changes reversed'
+   END 
+    SELECT
+        ERROR_NUMBER() AS ErrorNumber,
+        ERROR_SEVERITY() AS ErrorSeverity,
+        ERROR_STATE() AS ErrorState,
+        ERROR_PROCEDURE() AS ErrorProcedure,
+        ERROR_LINE() AS ErrorLine,
+        ERROR_MESSAGE() AS ErrorMessage
+END CATCH
+
+
+
+
+
+
+
+
+
+/*
+UPDATE Carrera 
+SET facultad = @id_facultad_destination
+WHERE id = @id_facultad_source
+*/
+GO
+/****** Object:  StoredProcedure [dbo].[SP_FacultadGetAll]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_FacultadGetAll]
+AS
+SELECT 
+	id,
+	nombre_facultad,
+	codigo_facultad,
+	creado_tmstp,
+	actualizado_tmstp,
+	estado
+FROM 
+	Facultad 
+where 
+	estado = 'A'
+order by
+	id desc
+GO
+/****** Object:  StoredProcedure [dbo].[SP_FacultadGetAllDeleted]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_FacultadGetAllDeleted]
+AS
+SELECT id,
+	nombre_facultad,
+	codigo_facultad,
+	creado_tmstp,
+	actualizado_tmstp,
+	estado
+FROM 
+	Facultad 
+where 
+	estado = 'I'
+GO
+/****** Object:  StoredProcedure [dbo].[SP_FacultadGetById]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_FacultadGetById]
+@id as int
+AS
+  SELECT 
+	id,
+	nombre_facultad,
+	codigo_facultad,
+	creado_tmstp,
+	actualizado_tmstp,
+	estado 
+  FROM 
+	Facultad  
+  WHERE 
+	Id = @id and estado = 'A'
+GO
+/****** Object:  StoredProcedure [dbo].[SP_FacultadUpdate]    Script Date: 2/01/2024 17:54:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_FacultadUpdate]
+@id as int,
+@nombre_facultad as nvarchar(256),
+@codigo_facultad as nvarchar(16)
+AS
+UPDATE Facultad 
+SET nombre_facultad = @nombre_facultad,
+    codigo_facultad = @codigo_facultad,
+    actualizado_tmstp = CURRENT_TIMESTAMP
+WHERE id = @id
+GO

@@ -1,0 +1,11 @@
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\bin\Debug\net7.0\Netcore.Domain.deps.json
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\bin\Debug\net7.0\Netcore.Domain.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\bin\Debug\net7.0\Netcore.Domain.pdb
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\Netcore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\Netcore.Domain.AssemblyInfoInputs.cache
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\Netcore.Domain.AssemblyInfo.cs
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\Netcore.Domain.csproj.CoreCompileInputs.cache
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\Netcore.Domain.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\refint\Netcore.Domain.dll
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\Netcore.Domain.pdb
+C:\Proyectos\PruebaTecnica\PruebaTecnica\Netcore.Domain\obj\Debug\net7.0\ref\Netcore.Domain.dll
